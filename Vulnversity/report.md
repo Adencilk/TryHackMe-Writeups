@@ -133,6 +133,8 @@ The application allowed executable PHP content to be uploaded using the *.phtml*
 
 A PHP reverse shell payload was uploaded to the server.
 
+![Upload Success](screenshots/upload_success.png)
+
 ## Commands
 
 bash
