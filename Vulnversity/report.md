@@ -27,7 +27,8 @@ Identify open ports and exposed network services on the target machine.
 ```bash
 nmap -Pn <TARGET_IP>
 ```
-![Nmap scan Results] (screenshots/nmap.png)
+![Nmap scan Results] (./screenshots/nmap.png)
+
 ### Findings
 
 The Nmap scan identified six open TCP ports:
