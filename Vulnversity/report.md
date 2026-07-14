@@ -151,6 +151,8 @@ Commands such as:
 bash
 find / -perm -4000 2>/dev/null
 
+![Has SUID permision](screenshots/systemctl.png)
+
 
 were used to identify binaries with the SUID permission.
 
