@@ -55,6 +55,7 @@ Identify service versions and gather additional information about the exposed se
 ```bash
 nmap -sC -sV <TARGET_IP>
 ```
+![Enumeration Results](screenshots/nmap_enumeration.png)
 
 ### Findings
 
