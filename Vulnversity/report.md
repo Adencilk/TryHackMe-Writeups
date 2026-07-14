@@ -117,7 +117,9 @@ The following extensions were tested:
 
 #### Outcome
 The Intruder attack identified differences in server responses, indicating that certain PHP extensions were handled differently by the application. This information was used to select an extension for uploading a PHP reverse shell during the exploitation phase.
-The **.phtml** extensionsuccessfully bypassed the upload restriction.
+The **.phtml** extension successfully bypassed the upload restriction.
+
+![Server different responses](scrrenshots/server_response.png)
 
 ### 3. Exploitation
 
