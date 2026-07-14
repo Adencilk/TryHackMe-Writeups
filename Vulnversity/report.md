@@ -82,7 +82,7 @@ Discover hidden directories and web resources that are not directly linked from 
 ```bash
 gobuster dir -e -u http://<TARGET_IP>:3333 -w /usr/share/wordlists/dirbuster/directory-list-1.0.txt
 ```
-
+![Gobuster Result](screenshots/gobuster.png)
 #### Findings
 
 The directory enumeration identified several accessible directories:
