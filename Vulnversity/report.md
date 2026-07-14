@@ -1,14 +1,21 @@
 # Vulnversity Report
 
 ## Executive Summary
-This report documents the successful completion of the TryHackMe Vulnversity room. The assessment covered reconnaissance, enumeration, exploitation, and privilege escalation against the target machine.
+This report documents the security assessment performed against the TryHackMe Vulnversity machine. The assessment followed the standard penetration testing methodology of reconnaissance, enumeration, exploitation, and privilege escalation. Multiple services were identified, web content was enumerated, file upload restrictions were analyzed using Burp Suite, and an unrestricted file upload vulnerability was identified.
+
 
 ## Scope
 - Platform: TryHackMe
 - Room: Vulnversity
-- Objective: Gain user and root access while documenting the methodology.
+- Objective: Obtain initial access and escalate privileges while documenting every phase of the assessment.
 
 ## Methodology
+The assessment followed the following:
+1.Reconnaissance
+2.Enumeration
+3.Exploitation 
+4.Privilege Escalation
+6.Remediation
 
 ### 1. Reconnaissance
 
@@ -99,17 +106,48 @@ Determine which PHP file extensions are accepted by the application's upload fil
 
 #### Method
 The file upload request was intercepted and sent to Burp Suite Intruder. A list of common PHP extensions was tested to identify which extensions bypassed the upload restrictions.
+The following extensions were tested:
+ -.php
+ -.php3
+ -.php4
+ -.php5
+ -.phtml
 
 #### Outcome
 The Intruder attack identified differences in server responses, indicating that certain PHP extensions were handled differently by the application. This information was used to select an extension for uploading a PHP reverse shell during the exploitation phase.
+The **.phtml** extensionsuccessfully bypassed the upload restriction.
 
 ### 3. Exploitation
-- Initial access through the identified vulnerability
-- Reverse shell establishment
+
+## Vulnerability
+
+Unrestricted File Upload
+
+## Description
+
+The application allowed executable PHP content to be uploaded using the *.phtml* extension.
+
+A PHP reverse shell payload was uploaded to the server.
+
+## Commands
+
+bash
+nc -lvnp 1234
+
+The payload was configured with the attack machine IP address and listening port before upload.
 
 ### 4. Privilege Escalation
-- Local enumeration
-- Privilege escalation to root
+After obtaining shell access, local enumeration was performed to identify privilege escalation vectors.
+
+Commands such as:
+
+bash
+find / -perm -4000 2>/dev/null
+
+
+were used to identify binaries with the SUID permission.
+
+Misconfigured SUID binaries can allow privilege escalation to the root user.
 
 ## Tools Used
 - Nmap
@@ -117,14 +155,19 @@ The Intruder attack identified differences in server responses, indicating that 
 - Burp Suite
 - Netcat
 - Python
+- PHP Reverse Shell
 - Linux Terminal
 
 ## Key Skills Demonstrated
-- Network reconnaissance
-- Web enumeration
-- Exploitation
-- Linux privilege escalation
-- Technical documentation
+- Network Reconnaissance
+- Service Enumeration
+- Directory Enumeration
+- File Upload Testing
+- Burp Suite Intruder
+- Reverse Shell Deployment
+- Linux Enumeration
+- Privilege escalation
+- Technical Reporting
 
 ## Lessons Learned
-This room strengthened practical penetration testing skills and reinforced the importance of systematic enumeration before exploitation.
+This lab reinforced the importance of systematic enumeration before exploitation. Multiple reconnaissance techniques revealed hidden attack surfaces, while Burp Suite demonstrated how upload filters can be bypassed through alternative PHP extensions. The exercise also highlighted the importance of proper file upload validation and secure server configuration.
