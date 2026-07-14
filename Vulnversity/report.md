@@ -139,8 +139,9 @@ A PHP reverse shell payload was uploaded to the server.
 
 bash
 nc -lvnp 1234
-
 The payload was configured with the attack machine IP address and listening port before upload.
+
+![Reverse Shell](screenshots/reverse_shell.png)
 
 ### 4. Privilege Escalation
 After obtaining shell access, local enumeration was performed to identify privilege escalation vectors.
