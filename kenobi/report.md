@@ -69,6 +69,24 @@ of particular interest because it may allow
 unauthenticated access to files that could reveal
 sensitive information or assist in obtaining
 initial access.
+### Accessing the Anonymous share
+The anonymous SMB share was accessed without 
+authentication to identify any publicly accessible files.
+**Command:**
+```bash
+smbclient //<TARGET_IP>/anonymous -N
+```
+### Files Discovered
+log.txt file was discovered, this log file 
+contain information that may assist in further enumeration
+and exploitation.
+
+###Analysis
+The `anonymous` share allowed unauthenticated access. During 
+enumeration, a file named `log.txt` was discovered. Log files often
+contain configuration details, usernames, file paths, or other information
+that can help identify a path to initial access.
+
 
 ## Initial Access
 
