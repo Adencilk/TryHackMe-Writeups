@@ -81,7 +81,7 @@ log.txt file was discovered, this log file
 contain information that may assist in further enumeration
 and exploitation.
 
-###Analysis
+### Analysis
 The `anonymous` share allowed unauthenticated access. During 
 enumeration, a file named `log.txt` was discovered. Log files often
 contain configuration details, usernames, file paths, or other information
