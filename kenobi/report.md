@@ -43,7 +43,32 @@ An initial Nmap scan was performed to identify open ports and running services.
  lead to initial access.
 
 ## Enumeration
+### SMB Enumeration
+**Objective**
+Enumerate available SMB shares and gather information
+about the target.
+**Command**
+```bash
+smbclient -L //<TARGET_IP> -N
+```
+### Available SMB Shares
 
+|	Sharename   |   Type    | Comment                                      |
+|-------------|-----------|----------------------------------------------|
+|	print$      |    Disk   |   Printer Drivers                            |
+|	anonymous   |    Disk   |                                              |
+|	IPC$        |   IPC     |  IPC Service (kenobi server (Samba, Ubuntu)) |
+
+**Screenshot:**
+![SMB Enumeration](screenshots/kenobi_smb.png)
+
+**Analysis:**
+Three SMB shares were identified during
+enumeration. The **anonymous** share was 
+of particular interest because it may allow 
+unauthenticated access to files that could reveal
+sensitive information or assist in obtaining
+initial access.
 
 ## Initial Access
 
