@@ -18,7 +18,6 @@ An initial Nmap scan was performed to identify open ports and running services.
  nmap -Pn <TARGET_IP>
  ```
 
- 7 ports were found to be open:
  ### Open ports
 |PORT  |    STATE |   SERVICE         |
 |------|----------|-------------------|
@@ -32,8 +31,19 @@ An initial Nmap scan was performed to identify open ports and running services.
 
  **Screenshot.**
  ![Nmap Scan](screenshots/kenobi_nmap.png)
+ 
+ ### Analysis
+ The initial Nmap scan identified seven
+ open ports on the target system.The 
+ presence of FTP,SSH,HTTP,SMB(NetBIOS/
+ Microsoft-DS), RPCBind, and NFS suggested 
+ multiple services that required further enumeration.
+ SMB and NFS were identified as high-priority targets
+ because they commonly expose shared resources that may
+ lead to initial access.
 
 ## Enumeration
+
 
 ## Initial Access
 
