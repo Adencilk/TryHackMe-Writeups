@@ -14,9 +14,9 @@ escalate privileges, and document the findings.
 An initial Nmap scan was performed to identify open ports and running services.
 **Command:**
 
- """bash
+ ```bash
  nmap -Pn <TARGET_IP>
- """
+ ```
 
  7 ports were found to be open:
  ### Open ports
