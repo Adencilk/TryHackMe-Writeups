@@ -15,18 +15,22 @@ An initial Nmap scan was performed to identify open ports and running services.
 Command:
  '''bash
  nmap -Pn <TARGET_IP>
- 7 ports were found to be open:
- 
-PORT       STATE   SERVICE
-21/tcp     open     ftp
-22/tcp     open     ssh
-80/tcp     open     http
-111/tcp    open     rpcbind
-139/tcp    open     netbios-ssn
-445/tcp    open     microsoft-ds
-2049/tcp   open      nfs
-## Results
+ '''
 
+ 7 ports were found to be open:
+ ### Open ports
+|PORT  |    STATE |   SERVICE         |
+|------|----------|-------------------|
+|21    |    open  |    ftp            |
+|22    |    open  |    ssh            |
+|80    |    open  |    http           |
+|111   |    open  |    rpcbind        |
+|139   |    open  |    netbios-ssn    |
+|445   |    open  |    microsoft-ds   |
+|2049  |     open |    nfs            |
+
+ **Screenshot.**
+ ![Nmap Scan](screenshots/kenobi_nmap.png)
 
 ## Enumeration
 
