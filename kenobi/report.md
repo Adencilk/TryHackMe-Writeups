@@ -12,7 +12,7 @@ escalate privileges, and document the findings.
 ## Reconnaissance
 ### Nmap scan
 An initial Nmap scan was performed to identify open ports and running services.
-Command:
+**Command:**
  '''bash
  nmap -Pn <TARGET_IP>
  '''
