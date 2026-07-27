@@ -157,7 +157,7 @@ Selecting the menu option that executes curl caused the SUID binary to run malic
   whoami
 ## Output
    root
-![Output](kenobi_output.png)
+![Output](screenshots/kenobi_output.png)
 
 ## Recommendations 
 - Keep software updated.
