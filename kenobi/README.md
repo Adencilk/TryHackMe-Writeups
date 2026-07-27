@@ -3,6 +3,9 @@
 - Platform: TryHackMe
 - Difficulty: Easy
 
+### Methodology
+Reconnaissance,Enumeration,Initial Access,Privilege Escalation.
+
 - ## Objectives
 -  Perform reconnaissance
 -  Ebumerate services
@@ -11,6 +14,11 @@
 -  Capture the flags
 -  ## Tools
 -  Nmap
--  SMB
+-  SMBclient
 -  NFS
 -  SSH
+-  find
+-  rpcinfo
+-  showmount
+-  nc
+-  searchsploit
