@@ -129,12 +129,14 @@ Further Analysis
 ![SUID binaries](screenshots/kenobi_suid.png)
 
 ![Menu](screenshots/kenobi_bin_menu.png)
-**Findings**
+## Findings
 The SUID binary executes the following commands without specifying their full paths:
-   -Curl
-   -uname
-   -ifconfig
-**Security Impact**
+   ------------
+   |Curl      |
+   |uname     |
+   |ifconfig  |
+   ------------
+## Security Impact
 Because the binary searches for these commands using the user's PATH,an attacker can place a maalicious executable earlier in the PATH and have it executed with root privileges.
 
 ## Flags Obtained
