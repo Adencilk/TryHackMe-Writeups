@@ -160,12 +160,13 @@ Selecting the menu option that executes curl caused the SUID binary to run malic
 ![Output](screenshots/kenobi_output.png)
 
 ## Recommendations 
-- Keep software updated.
-- Apply the principle of least privilege.
-- Disable unnecessary services.
-- Regularly review system configurations.
+- Upgrade ProFTPD to a patched version.
+- Disable the mod_copy module if it is not required.
+- Restrict NFS exports to trusted hosts only.
+- Protect SSH private keys with strict file permissions.
+- Remove unnecessary SUID binaries.
+- Use absolute paths when executing system commands from privileged programs.
+- Perform regular security audits and vulnerability scans.
 
   ## Conclusion
-  This room provided practical experience
-  in reconnaissance, service enumeration,
-  explotation, and linux privilege escalation.
+The Kenobi machine was successfully compromised through a structured penetration testing methodology. Enumeration revealed exposed SMB and NFS services and a vulnerable ProFTPD installation. Exploiting the mod_copy vulnerability allowed extraction of an SSH private key, which provided initial access as the kenobi user. A misconfigured SUID binary was then exploited via PATH HIJACKING to obtain root privileges. This assessment highlights the importance of secure service configuration, patch management, proper access controls, and regular security assessments.
