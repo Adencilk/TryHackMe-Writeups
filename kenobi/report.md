@@ -87,7 +87,16 @@ enumeration, a file named `log.txt` was discovered. Log files often
 contain configuration details, usernames, file paths, or other information
 that can help identify a path to initial access.
 
-
+### NFS Enumeration
+**Objective**
+Identify NFS exports that may expose sensitive directories or files accessible without authentication.
+**Command**
+```bash
+showmount -e <TARGET_IP>
+nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse <TARDET_IP>
+```
+**Screenshot:**
+![NFS](screenshots/kenobi_nfs.png)
 ## Initial Access
 
 ## Privilege Escalation
