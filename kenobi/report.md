@@ -134,11 +134,11 @@ Further Analysis
 The SUID binary executes the following commands without specifying their full paths:
 
    ------------
-   |Curl      |
+   Curl      
    ------------
-   |uname     |
+   Uname     
    ------------
-   |ifconfig  |
+   Ifconfig  
    ------------
 ## Security Impact
 Because the binary searches for these commands using the user's PATH,an attacker can place a maalicious executable earlier in the PATH and have it executed with root privileges.
