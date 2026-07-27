@@ -99,6 +99,22 @@ nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse <TARDET_IP>
 ![NFS](screenshots/kenobi_nfs.png)
 ## Initial Access
 
+### Gaining Initial Acess-ProFTPD
+**Objective**
+Investigate the FTP service for known vulnerabilities that can be used to gain initial access to the target system.
+**Command**
+```bash
+nmap -sV <TARGET_IP>
+```
+**Screenshot:**
+![ProFTPD Version](screenshots/kenobi_proftpd.png)
+
+### Analysis
+The target is running ProFTPD 1.3.5.This version may have the mod_copy module enabled, which allows attackers to copy files on the server without authentication.
+If exploitable, this can be used to move sensitive files such as SSH keys into accessible locations.
+
+### Security Impact 
+An exposed and vulnerable FTP service can allow unauthorized access to sensitive files, leading to initial compromise of the target system.
 ## Privilege Escalation
 
 ## Flags Obtained
