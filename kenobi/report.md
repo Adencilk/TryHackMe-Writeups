@@ -130,7 +130,9 @@ Further Analysis
 
 ![Menu](screenshots/kenobi_bin_menu.png)
 ## Findings
+
 The SUID binary executes the following commands without specifying their full paths:
+
    ------------
    |Curl      |
    |uname     |
