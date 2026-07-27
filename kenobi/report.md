@@ -116,6 +116,26 @@ If exploitable, this can be used to move sensitive files such as SSH keys into a
 ### Security Impact 
 An exposed and vulnerable FTP service can allow unauthorized access to sensitive files, leading to initial compromise of the target system.
 ## Privilege Escalation
+### Privilege Escalation Enumeration
+**Objective**
+Identify misconfigured SUID binaries that can be abused to escalate privileges.
+**Command**
+```bash
+find / -perm -4000 -type f 2>/dev/null
+```
+Further Analysis
+  strings /usr/bin/menu
+**Screenshots**
+![SUID binaries](screenshots/kenobi_suid.png)
+
+![Menu](screenshots/kenobi_bin_menu.png)
+**Findings**
+The SUID binary executes the following commands without specifying their full paths:
+   -Curl
+   -uname
+   -ifconfig
+**Security Impact**
+Because the binary searches for these commands using the user's PATH,an attacker can place a maalicious executable earlier in the PATH and have it executed with root privileges.
 
 ## Flags Obtained
 
