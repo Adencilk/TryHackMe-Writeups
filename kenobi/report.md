@@ -135,7 +135,9 @@ The SUID binary executes the following commands without specifying their full pa
 
    ------------
    |Curl      |
+   ------------
    |uname     |
+   ------------
    |ifconfig  |
    ------------
 ## Security Impact
