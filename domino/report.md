@@ -11,7 +11,7 @@ nmap -sC -sV <TARGET_IP>
 ```
 **Nmap Scan Results:**
 
-![Nmap Scan Results](sreenshots/domino_nmap.png]
+![Nmap Scan Results](sreenshots/domino_nmap.png)
 
 The scan identified the following open ports:
 
