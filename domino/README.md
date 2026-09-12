@@ -2,24 +2,35 @@
 
 ## Overview
 
+Domino is a TryHackMe Penetration Testing lab focused on reconnaissance, service enumeration, vulnerability identification and privilege escalation.
+
+## Target
+
 - Platform: TryHackMe
 - Room: Domino
 - Category: Penetration Testing
 - Target System: Linux (NexusCorp Employee Portal)
 
+## Objectives
+- Perform reconnaissance
+- Enumerate exposed services
+- Identify vulnerabilities
+- Gain Initial access
+- Escalate privileges
+- Obtain proof of compromise
 
-## Objective
+## Key Findings
+-
+-
+-
 
-Document the methodology used to assess the Domino machine, including reconnaissance, enumeration, exploitation, and privilege escalation.
-
-## Methodology
+## Attack path
 
 1. Reconnaisance
 2. Enumeration
-3. Vulnerability Identification
-4. Initial Access
-5. Privilege Escalation
-6. Lessons Learned
+3. Exploitation
+4. Privilege Escalation
+5. Root
 
 ## 1. Reconnaissance
 
