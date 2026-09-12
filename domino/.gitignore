@@ -1,1 +1,4 @@
-
+# Ignore temporary terminal logs and private keys
+*.log
+*.key
+id_rsa
