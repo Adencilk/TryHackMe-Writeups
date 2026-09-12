@@ -18,7 +18,7 @@ The scan identified the following open ports:
 | PORT    |STATE | SERVICE | VERSION
 |---------|------|---------|-----------------------------------------------------------------
 | 22/tcp  |open  | ssh     | OpenSSH 9.6p1 Ubuntu 3ubuntu13.16 (Ubuntu Linux; protocol 2.0)
-|
+|         |      |         |
 | 80/tcp  |open  | http    | Apache httpd 2.4.58 ((Ubuntu))
 
 
