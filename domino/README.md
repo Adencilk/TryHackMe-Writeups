@@ -21,6 +21,13 @@ Document the methodology used to assess the Domino machine, including reconnaiss
 
 ## 1. Reconnaissance
 
+## Nmap Scan
+```bash
+nmap -sC -sV <TARGET_IP>
+```
+**Results:**
+
+
 ## 2. Enumeration
 
 ## 3. Vulnerability Identification
