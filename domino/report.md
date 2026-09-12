@@ -15,9 +15,13 @@ nmap -sC -sV <TARGET_IP>
 
 The scan identified the following open ports:
 
-PORT    STATE  SERVICE  VERSION
-22/tcp  open   ssh      OpenSSH 9.6p1 Ubuntu 3ubuntu13.16 (Ubuntu Linux; protocol 2.0)
-80/tcp  open   http     Apache httpd 2.4.58 ((Ubuntu))
+| PORT    |STATE | SERVICE | VERSION
+-------------------------------------------------------------------------------------------
+| 22/tcp  |open  | ssh     | OpenSSH 9.6p1 Ubuntu 3ubuntu13.16 (Ubuntu Linux; protocol 2.0)
+-------------------------------------------------------------------------------------------
+| 80/tcp  |open  | http    | Apache httpd 2.4.58 ((Ubuntu))
+-------------------------------------------------------------------------------------------
+
 ### 3.2 Open Ports
 ## 4. Enumeration
 ### 4.1 Service Enumeration
