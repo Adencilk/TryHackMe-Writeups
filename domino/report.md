@@ -13,6 +13,8 @@ nmap -sC -sV <TARGET_IP>
 
 ![Nmap Scan Results](sreenshots/domino_nmap.png)
 
+### 3.2 Open Ports
+
 The scan identified the following open ports:
 
 | PORT    |STATE | SERVICE | VERSION
@@ -22,10 +24,21 @@ The scan identified the following open ports:
 | 80/tcp  |open  | http    | Apache httpd 2.4.58 ((Ubuntu))
 
 
-### 3.2 Open Ports
 ## 4. Enumeration
 ### 4.1 Service Enumeration
+
 ### 4.2 Web Enumeration
+
+```bash
+ curl -I http://<TARGET_IP>
+```
+
+Web Server: Apache/2.4.58
+Operating System: Ubuntu
+Port: 80/tcp
+Service: HTTP
+
+
 ## 5. Vulnerability Analysis
 ## 6. Exploitation
 ## 7. Initial Access
