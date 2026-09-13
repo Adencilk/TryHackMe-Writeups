@@ -25,9 +25,8 @@ The scan identified the following open ports:
 
 
 ## 4. Enumeration
-### 4.1 Service Enumeration
 
-### 4.2 Web Enumeration
+### 4.1 Web Enumeration
 
 ```bash
  curl -I http://<TARGET_IP>
@@ -37,6 +36,28 @@ The scan identified the following open ports:
 - Operating System: Ubuntu
 - Port: 80/tcp
 - Service: HTTP
+
+```bash
+curl http://<TARGET_IP>
+```
+
+Identified the following active endpoints:
+
+* **Authentication Pages:**
+  * `/index.php` - Primary user authentication login portal.
+  * `/forgot.php` - Account recovery/password reset form (potential for username enumeration).
+* **Information & Styling Pages:**
+  * `/team.php` - Public corporate directory (utilized for username harvesting).
+  * `/static/style.css` - Global cascading stylesheet for portal aesthetics.
+
+  ### 4.2 Service Enumeration
+
+Running:
+```bash
+curl http://<TARGET_IP>/team.php
+```
+
+Exposed emails which helped us get their usernames also based on their naming convention of firstname.lastname.
 
 
 ## 5. Vulnerability Analysis
