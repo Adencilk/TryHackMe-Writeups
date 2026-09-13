@@ -57,7 +57,15 @@ Running:
 curl http://<TARGET_IP>/team.php
 ```
 
-Exposed emails which helped us get their usernames also based on their naming convention of firstname.lastname.
+Exposed emails which helped us get their usernames, based on their naming convention of firstname.lastname.
+
+The following emails were exposed:
+- Laura.hayes@nexus.corp
+- Michael.chen@nexus.corp
+- Sarah.johson@nexus.corp
+- Robert.wilson@nexus.corp
+- David.brown@nexus.corp
+- James.wright@nexus.corp
 
 
 ## 5. Vulnerability Analysis
