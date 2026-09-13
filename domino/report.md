@@ -67,6 +67,12 @@ The following emails were exposed:
 - David.brown@nexus.corp
 - James.wright@nexus.corp
 
+ ### Directory Discovery
+ ```bash
+gobuster dir -u http://<TARGET_IP> -w /usr/share/wordlists/dirb/common.txt
+```
+
+![Gobuster Results](screenshots/gobuster_domino.png)
 
 ## 5. Vulnerability Analysis
 ## 6. Exploitation
