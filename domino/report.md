@@ -33,10 +33,10 @@ The scan identified the following open ports:
  curl -I http://<TARGET_IP>
 ```
 
-Web Server: Apache/2.4.58
-Operating System: Ubuntu
-Port: 80/tcp
-Service: HTTP
+- Web Server: Apache/2.4.58
+- Operating System: Ubuntu
+- Port: 80/tcp
+- Service: HTTP
 
 
 ## 5. Vulnerability Analysis
