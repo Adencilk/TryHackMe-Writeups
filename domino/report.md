@@ -74,6 +74,19 @@ gobuster dir -u http://<TARGET_IP> -w /usr/share/wordlists/dirb/common.txt
 
 ![Gobuster Results](screenshots/gobuster_domino.png)
 
+| Endpoint     | Status Code    | Size (Bytes) | Potential Significance / Function |
+| :---         | :---           | :---           | :---                         |
+| `/admin`     | 301 (Redirect) | 314  | Restricted administrative login or control panel. |
+| `/api`       | 301 (Redirect) | 312  | Application Programming Interface backend routing. |
+| `/backup`    | 301 (Redirect) | 315  | Exposed configuration or database archive directory. |
+| `/index.php` | 200 (Success)  | 861  | Primary login interface. |
+| `/javascript`| 301 (Redirect) | 319  | Client-side application script repository. |
+| `/static`    | 301 (Redirect) | 315  | Static media, CSS stylesheets, and asset store. |
+| `/support`   | 301 (Redirect) | 316  | Customer service or ticketing portal subsystem. |
+| `/.htaccess` | 403 (Forbidden)| 278  | Server configuration file (access denied). |
+| `/.htpasswd` | 403 (Forbidden)| 278  | Apache basic authentication credentials file (access denied). |
+
+
 ## 5. Vulnerability Analysis
 ## 6. Exploitation
 ## 7. Initial Access
