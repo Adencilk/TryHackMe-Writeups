@@ -8,7 +8,7 @@ I did Nmap scan on the target to identify the open ports, services running and t
    nmap -sC -sV 10.49.133.55
 ```
 
-[Nmap Results](screenshots/nmap_silent_monitor.png)
+[Nmap Results] (screenshots/nmap_silent_monitor.png)
 
 
 ## 3. Enumeration
