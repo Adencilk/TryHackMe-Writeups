@@ -18,9 +18,21 @@ From the scan I found out that two ports were open :
 
 
 ## 3. Enumeration
-I look into the web on port 5050 and found out that NOC Portal v2.4.1 is running.
+### Web Enumeration
+I looked into the web on port 5050 and found out that NOC Portal v2.4.1 is running.
 
 ![Web](screenshots/web_silent_monitor.png)
+
+### Directory Enumeration
+
+I ran Gobuster to identify directories and files on a website.
+
+```bash
+ gobuster dir -u http://10.49.133.55:5050/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+```
+I found out /internal directory.
+
+![Gobuster Results](screenshots/gobuster_silent_monitor.png)
 
 ## 4. Vulnerability Identification
 ## 5. Initial Access
