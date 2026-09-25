@@ -51,7 +51,6 @@ without success, I decided to try SQL Injection instead.
 ![](screenshots/sql_injection_silent_monitor.png)
 
 
-
 ## 5. Initial Access
 ## 6. Privilege Escalation
 ## 7. Evidence
