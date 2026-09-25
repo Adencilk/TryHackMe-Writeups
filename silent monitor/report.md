@@ -18,9 +18,10 @@ From the scan I found out that two ports were open :
 
 
 ## 3. Enumeration
-I look into the web running on port 5050 :
+I look into the web on port 5050 and found out that NOC Portal v2.4.1 is running.
 
 ![Web](screenshots/web_silent_monitor.png)
+
 ## 4. Vulnerability Identification
 ## 5. Initial Access
 ## 6. Privilege Escalation
