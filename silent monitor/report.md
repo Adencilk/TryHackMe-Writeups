@@ -61,6 +61,9 @@ I took sometime to understand the web and found different features and informati
 ![](screenshots/ping_silent_monitor.png)
 
 ## 6. Privilege Escalation
+
+    https://medium.com/@saber22/tryhackme-silent-monitor-writeup-364c1941f905  (ROOM)
+
 ## 7. Evidence
 ## 8. Findings
 ## 9. Lessons Learned
