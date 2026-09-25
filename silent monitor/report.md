@@ -18,7 +18,7 @@ From the scan I found out that two ports were open :
 
 
 ## 3. Enumeration
-I look into the web running on port 5050:
+I look into the web running on port 5050 :
 
 ![Web](screenshots/web_silent_monitor.png)
 ## 4. Vulnerability Identification
