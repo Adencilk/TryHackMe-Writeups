@@ -4,11 +4,11 @@
 ## 2. Reconnaissance
 I did Nmap scan on the target to identify the open ports, services running and their versions.
 
-``` bash
+```bash
    nmap -sC -sV 10.49.133.55
 ```
 
-[Nmap Results](screenshots/nmap_silent_monitor.png)
+![Nmap Results](screenshots/nmap_silent_monitor.png)
 
 
 ## 3. Enumeration
