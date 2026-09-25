@@ -56,7 +56,7 @@ By using SQL Injection vulnerability on the website I was able to successfully l
 
 ![](screenshots/operator_silent_monitor.png)
 
-I took sometime to understand the web and found different features and information, including Host Health that I assume was used to run ping to the hosts to verify their reachability through ICMP packets. Also i found Audit log and services under monitoring where I found information about the logs and users who had been logged (jmartin, svc-mon,,,) and the Ip adresses.
+I took sometime to understand the web and found different features and information, including Host Health that I assume was used to run ping to the hosts to verify their reachability through ICMP packets. Also I found Audit log and services under monitoring where I found information about the logs and users who had been logged (jmartin, svc-mon,,,) and the Ip adresses.
 
 ![](screenshots/ping_silent_monitor.png)
 
