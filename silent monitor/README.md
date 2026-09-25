@@ -8,8 +8,10 @@ The objective of this lab is to strengthen practical skills in reconnaissance, e
 ## Lab Information
 
 -Platform: TryHackMe
+
 -Room: Silent Monitor
--Category: Pentesting
+
+-Category: Penetration Testing
 
 ## Objectives
 - Perform reconnaissance against the target
