@@ -52,6 +52,11 @@ without success, I decided to try SQL Injection instead.
 
 
 ## 5. Initial Access
+By using SQL Injection vulnerability on the website I was able to successfully login into the portal and obtained the account netops with the role of operator.
+
+![](screenshots/operator_silent_monitor.png)
+
+
 ## 6. Privilege Escalation
 ## 7. Evidence
 ## 8. Findings
