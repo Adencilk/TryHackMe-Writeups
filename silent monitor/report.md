@@ -34,6 +34,10 @@ I found out /internal directory.
 
 ![Gobuster Results](screenshots/gobuster_silent_monitor.png)
 
+I tried to access the directory from the web:
+
+![Web Directory](screenshots/web_dir_silent_monitor.png)
+
 ## 4. Vulnerability Identification
 ## 5. Initial Access
 ## 6. Privilege Escalation
