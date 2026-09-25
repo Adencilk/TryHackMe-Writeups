@@ -39,6 +39,19 @@ I tried to access the directory from the web:
 ![Web Directory](screenshots/web_dir_silent_monitor.png)
 
 ## 4. Vulnerability Identification
+
+Once I have accessed the web directory, I tried to login using default credentials :
+
+  admin : admin 
+
+  user : user 
+
+without success, I decided to try SQL Injection instead.
+
+![](screenshots/sql_injection_silent_monitor.png)
+
+
+
 ## 5. Initial Access
 ## 6. Privilege Escalation
 ## 7. Evidence
