@@ -26,6 +26,7 @@ The objective of this lab is to strengthen practical skills in reconnaissance, e
 - Nmap
 - Gobuster
 - Kali Linux
+- Burp Suite
 
 ## Methodology
 1. Reconnaissance
