@@ -78,6 +78,8 @@ From it we were able to see some files like secret.config, which appears to stor
 
 ![](screenshots/credentials_silent_monitor.png)
 
+I was now able to get the sysadmin username and the password required to sign in.
+
 
 ## 6. Privilege Escalation
 
