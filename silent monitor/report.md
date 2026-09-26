@@ -66,6 +66,8 @@ I used Burp Suite to capture the request, then added &ls after target=127.0.0.1 
 
 After several tests, I found that adding %0als successfully displayed the files in the current folder.
 
+![](screenshots/burp2_silent_monitor.png)
+
 ## 6. Privilege Escalation
 
     
