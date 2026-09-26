@@ -60,6 +60,12 @@ I took sometime to understand the web and found different features and informati
 
 ![](screenshots/ping_silent_monitor.png)
 
+I used Burp Suite to capture the request, then added &ls after target=127.0.0.1 in the POST request to try listing the files in the current directory, but it did not work.
+
+![](screenshots/burp1_silent_monitor.png)
+
+After several tests, I found that adding %0als successfully displayed the files in the current folder.
+
 ## 6. Privilege Escalation
 
     
