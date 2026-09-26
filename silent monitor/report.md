@@ -64,9 +64,20 @@ I used Burp Suite to capture the request, then added &ls after target=127.0.0.1 
 
 ![](screenshots/burp1_silent_monitor.png)
 
+
 After several tests, I found that adding %0als successfully displayed the files in the current folder.
 
+
 ![](screenshots/burp2_silent_monitor.png)
+
+
+%0a is the URL-encoded form of the newline character \n, a newline can separate commands, causing the backend to treat the input as two lines and potentially enabling command injection.
+%00: Represents a null byte, which in some older parsing behaviors may terminate a string early and prevent the rest of the input from being processed normally.
+
+From it we were able to see some files like secret.config, which appears to store very important information. Therefore, we modified the POST request from target=127.0.0.1%0als to target=127.0.0.1%0acat%00secret.config in order to read the contents of secret.config.
+
+![](screenshots/credentials_silent_monitor.png)
+
 
 ## 6. Privilege Escalation
 
