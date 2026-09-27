@@ -80,6 +80,10 @@ From it we were able to see some files like secret.config, which appears to stor
 
 I was now able to get the sysadmin username and the password required to sign in.
 
+At the beginning there was ssh port open, I tried to login into the server with the found username and password.
+
+```bash
+   ssh sysadmin@10.48.186.84
 
 ## 6. Privilege Escalation
 
