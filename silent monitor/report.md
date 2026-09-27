@@ -1,6 +1,9 @@
 # Silent Monitor
 
 ## 1. Introduction
+
+CorpNet's internal network operations centre has been running quietly for years. Monitoring hosts, logging events, and keeping the infrastructure alive. Or so it seems. A tip from a disgruntled contractor suggests that someone on the NOC team has been cutting corners, leaving doors open, and hiding things in places no one thinks to look.
+
 ## 2. Reconnaissance
 I did Nmap scan on the target to identify the open ports, services running and their versions.
 
@@ -121,9 +124,51 @@ Can use keepass4crack.py to crack the password of infrastructure.kdbx .
 
 The password was successfully found to be spring.
 
+We then used the this command again to open infrastructure.kdbx
 
-    
-## 7. Evidence
-## 8. Findings
-## 9. Lessons Learned
-## 10. Conclusion
+```bash
+   keepass2 infrastructure.kdbx
+```
+
+Next, I switched back to the SSH terminal and ran the su - root command, then entered the password we had found earlier. This successfully logged us in as root. After that, running ls -la allowed us to see the root.txt file, and cat root.txt was used to read its contents
+
+## 7. Lessons Learned
+
+Lessons Learned
+
+Completing the Silent Monitor room reinforced several important practical cybersecurity concepts.
+
+### 1. Enumeration is critical
+
+The initial enumeration phase is essential for understanding the target environment. Identifying exposed services and technologies helps determine where further investigation should be focused.
+
+### 2. Don't rely on a single attack path
+
+A target may expose multiple services or potential entry points. I learned the importance of investigating findings systematically rather than immediately focusing on the first potential vulnerability.
+
+### 3. Understand what the tools are telling you
+
+Tools such as Nmap and web enumeration utilities provide valuable information, but the output still needs to be interpreted. Understanding why a result matters is more important than simply running the command.
+
+### 4. Follow the evidence
+
+Each discovery should lead to the next logical step. Information gathered during enumeration can reveal usernames, technologies, directories, services, permissions, or other clues that help build an attack path.
+
+### 5. Privilege escalation requires careful enumeration
+
+After gaining an initial foothold, the work is not necessarily finished. Checking the system, users, permissions, running processes, files, and available privileges can reveal opportunities for moving toward higher privileges.
+
+### 6. Troubleshooting is part of penetration testing
+
+Not every command or technique works on the first attempt. The room reinforced the importance of understanding errors, checking assumptions, and adapting the approach instead of blindly repeating commands.
+
+### 7. Documentation matters
+
+Recording commands, findings, screenshots, and explanations makes the process reproducible and helps me understand what I actually learned. It also turns individual labs into evidence of practical cybersecurity experience.
+
+## Overall takeaway
+
+Silent Monitor helped me strengthen my methodology: enumerate → analyze → investigate → exploit where appropriate → escalate privileges → document the findings.
+
+The biggest lesson is that penetration testing is not just about knowing tools or commands. It is about understanding the information collected and using it to make logical decisions throughout the assessment.
+
