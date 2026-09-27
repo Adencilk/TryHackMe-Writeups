@@ -84,6 +84,9 @@ At the beginning there was ssh port open, I tried to login into the server with 
 
 ```bash
    ssh sysadmin@10.48.186.84
+```
+
+![](screenshots/flag1_silent_monitor.png)
 
 ## 6. Privilege Escalation
 
