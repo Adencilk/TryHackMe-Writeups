@@ -88,7 +88,14 @@ At the beginning there was ssh port open, I tried to login into the server with 
 
 ![](screenshots/flag1_silent_monitor.png)
 
+I was able to login and found the first flag.
+
 ## 6. Privilege Escalation
+
+Now I need to read a file named root.txt, but it cannot be read directly using the sysadmin account, so we need a higher-privileged account. I checked the contents of backups and I  found README.txt and infrastructure.kdbx.
+After opening README.txt, it explained that infrastructure.kdbx is a KeePass credential database used to store credentials. This suggests that if I can open this database, I may be able to obtain information for a more privileged account.
+
+![](screenshots/readme_silent_monitor.txt)
 
     
 ## 7. Evidence
