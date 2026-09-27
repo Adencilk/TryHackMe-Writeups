@@ -97,6 +97,31 @@ After opening README.txt, it explained that infrastructure.kdbx is a KeePass cre
 
 ![](screenshots/readme_silent_monitor.png)
 
+
+Explanation:
+
+root.txt: A file commonly used in CTFs or penetration tests to represent the root-level flag, usually readable only by privileged users.
+infrastructure.kdbx: A KeePass database file used to store sensitive information such as usernames, passwords, and private keys.
+
+I used the scp command to download the infrastructure.kdbx file on a new terminal.
+
+```bash
+   scp sysadmin@10.48.186.84:backups/infrastructure.kdbx .
+```
+
+Opening infrastructure.kdbx requires a password, which we do not have. Therefore, we need to crack the correct password before we can successfully open the database.
+
+![](screenshots/keepass_silent_monitor.png)
+
+Can use keepass4crack.py to crack the password of infrastructure.kdbx .
+
+```bash
+  python3 keepass4crack.py ../infrastructure.kdbx /usr/share/wordlists/rockyou.tx
+```
+
+The password was successfully found to be spring.
+
+
     
 ## 7. Evidence
 ## 8. Findings
