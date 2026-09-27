@@ -95,7 +95,7 @@ I was able to login and found the first flag.
 Now I need to read a file named root.txt, but it cannot be read directly using the sysadmin account, so we need a higher-privileged account. I checked the contents of backups and I  found README.txt and infrastructure.kdbx.
 After opening README.txt, it explained that infrastructure.kdbx is a KeePass credential database used to store credentials. This suggests that if I can open this database, I may be able to obtain information for a more privileged account.
 
-![](screenshots/readme_silent_monitor.txt)
+![](screenshots/readme_silent_monitor.png)
 
     
 ## 7. Evidence
